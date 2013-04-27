@@ -4,76 +4,90 @@
  */
 package semestralni.prace;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.awt.Font;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 
 /**
  *
  * @author Zdenek
  */
-public class Playground {
+public class Playground extends JButton {
 
-    private int size;
-    private char[][] playground;
+    int size, whoseTurn;
+    Button[][] playground;
 
     public Playground(int size) {
 
-        if (size < 0) {
-            size = -size;
-        }
-        if (size >= 0 && size < 10) {
-            size = 10;
-        }
-        if (size > 50) {
-            size = 50;
-        }
 
 
         this.size = size;
-        this.playground = new char[size][size];
+        this.playground = new Button[size][size];
 
-        for (int i = 0; i < size; i++) { //fill the field with dots
+        for (int i = 0; i < size; i++) { 
             for (int j = 0; j < size; j++) {
-                playground[i][j] = ('.');
+                playground[i][j] = new Button();
             }
         }
+        this.whoseTurn = 1;
     }
 
-    public int winnerCheck(int whoseTurn) {
+    public void winnerCheck(int whoseTurn) {
         int follow = 0;
-        char symbol;
+        String symbol;
+        Image myImage;
+        ImageIcon myIcon;
+
         if (whoseTurn == 1) {
-            symbol = 'O';
+            myImage = getToolkit().createImage("O2.jpg");
+
+            myIcon = new ImageIcon(myImage);
+            symbol = "O";
         } else {
-            symbol = 'X';
+            myImage = getToolkit().createImage("X2.jpg");
+            myIcon = new ImageIcon(myImage);
+            symbol = "X";
         }
 
 
         // checks horizontal lines
         for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size - 1; j++) {
-                if (playground[i][j] == symbol) {
+            for (int j = 0; j < size; j++) {
+                if (playground[i][j].text.equals(symbol)) {
                     follow++;
                 } else {
                     follow = 0;
                 }
                 if (follow == 5) {
-                    return whoseTurn;
+                    playground[i][j].setIcon(myIcon);
+                    playground[i][j - 1].setIcon(myIcon);
+                    playground[i][j - 2].setIcon(myIcon);
+                    playground[i][j - 3].setIcon(myIcon);
+                    playground[i][j - 4].setIcon(myIcon);
+
+                    win(whoseTurn);
                 }
             }
         }
         // check vertical lines
         for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size - 1; j++) {
-                if (playground[j][i] == symbol) {
+            for (int j = 0; j < size; j++) {
+                if (playground[j][i].text.equals(symbol)) {
                     follow++;
                 } else {
                     follow = 0;
                 }
                 if (follow == 5) {
-                    return whoseTurn;
+                    playground[j][i].setIcon(myIcon);
+                    playground[j - 1][i].setIcon(myIcon);
+                    playground[j - 2][i].setIcon(myIcon);
+                    playground[j - 3][i].setIcon(myIcon);
+                    playground[j - 4][i].setIcon(myIcon);
+                    win(whoseTurn);
+
                 }
             }
         }
@@ -81,54 +95,88 @@ public class Playground {
         // checks diagonals
         for (int i = 2; i < size - 2; i++) {
             for (int j = 2; j < size - 2; j++) {
-                if (playground[i][j] == playground[i + 1][j + 1] && playground[i][j] == playground[i + 2][j + 2] && playground[i][j] == playground[i - 1][j - 1] && playground[i][j] == playground[i - 2][j - 2] && playground[i][j] == symbol) {
-                    return whoseTurn;
+                if (playground[i][j].text.equals(playground[i + 1][j + 1].text) && playground[i][j].text.equals(playground[i + 2][j + 2].text) && playground[i][j].text.equals(playground[i - 1][j - 1].text) && playground[i][j].text.equals(playground[i - 2][j - 2].text) && playground[i][j].text.equals(symbol)) {
+                    playground[i + 1][j + 1].setIcon(myIcon);
+                    playground[i + 2][j + 2].setIcon(myIcon);
+                    playground[i - 1][j - 1].setIcon(myIcon);
+                    playground[i - 2][j - 2].setIcon(myIcon);
+                    playground[i][j].setIcon(myIcon);
+
+                    win(whoseTurn);
+
                 }
-                if (playground[i][j] == playground[i + 1][j - 1] && playground[i][j] == playground[i + 2][j - 2] && playground[i][j] == playground[i - 1][j + 1] && playground[i][j] == playground[i - 2][j + 2] && playground[i][j] == symbol) {
-                    return whoseTurn;
+                if (playground[i][j].text.equals(playground[i + 1][j - 1].text) && playground[i][j].text.equals(playground[i + 2][j - 2].text) && playground[i][j].text.equals(playground[i - 1][j + 1].text) && playground[i][j].text.equals(playground[i - 2][j + 2].text) && playground[i][j].text.equals(symbol)) {
+                    playground[i + 1][j - 1].setIcon(myIcon);
+                    playground[i + 2][j - 2].setIcon(myIcon);
+                    playground[i - 1][j + 1].setIcon(myIcon);
+                    playground[i - 2][j + 2].setIcon(myIcon);
+                    playground[i][j].setIcon(myIcon);
+                    win(whoseTurn);
                 }
             }
         }
 
 
-        // check if there are still options left
+//        // check if there are still options left
+//        for (int i = 0; i < size; i++) {
+//            for (int j = 0; j < size - 1; j++) {
+//                if (!".".equals(playground[j][i].text)) {
+//                } else {
+//                }
+//            }
+//        }
+    }
+
+    public void win(int a) {
+
         for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size - 1; j++) {
-                if (playground[j][i] != '.') {
-                    follow++;
-                } else {
-                    return 0;
-                }
+            for (int j = 0; j < size; j++) {
+                playground[i][j].operable = false;
             }
         }
-        return 3;
+
     }
 
-    public void saveGame(int whoseTurn) throws IOException {
-        try (FileWriter fw = new FileWriter("Piskvorky.txt")) {
-            fw.write(size);
-            for (int i = 0; i < size; i++) {
-                for (int j = 0; j < size; j++) {
-                    fw.write(playground[i][j]);
-                }
-            }
-            fw.write(whoseTurn);
-        }
-    }
+    public class Button extends JButton implements ActionListener {
 
-    public int loadGame() throws FileNotFoundException, IOException {
-        int whoseTurn;
-        try (FileReader fr = new FileReader("Piskvorky.txt")) {
-            size = (int) fr.read();
-            playground = new char[size][size];
-            for (int i = 0; i < size; i++) {
-                for (int j = 0; j < size; j++) {
-                    playground[i][j] = (char) fr.read();
-                }
-            }
-            whoseTurn = (int) fr.read();
+        boolean operable;
+        String text = "";
+
+        public Button() {
+            super();
+            this.setText(text);
+            this.operable = true;
+            this.addActionListener(this);
         }
 
-        return whoseTurn;
+        @Override
+        public void actionPerformed(ActionEvent ae) {
+            Font f1 = new Font("Monospaced ", Font.BOLD, 8);
+            if (operable == true) {
+                switch (whoseTurn) {
+
+                    case (1):
+                        this.text = "O";
+                        Image myImage = getToolkit().createImage("O.jpg");
+                        ImageIcon myIcon = new ImageIcon(myImage);
+                        this.setIcon(myIcon);
+                        operable = false;
+                        winnerCheck(whoseTurn);
+                        whoseTurn = 2;
+                        break;
+
+                    case (2):
+                        this.text = "X";
+                        Image myImage2 = getToolkit().createImage("X.jpg");
+                        ImageIcon myIcon2 = new ImageIcon(myImage2);
+                        this.setIcon(myIcon2);
+                        operable = false;
+                        winnerCheck(whoseTurn);
+                        whoseTurn = 1;
+                        break;
+
+                }
+            }
+        }
     }
 }
