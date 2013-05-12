@@ -4,15 +4,12 @@
  */
 package semestralni.prace;
 
-import java.awt.GridLayout;
+import java.awt.Color;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 /**
  *
@@ -20,339 +17,152 @@ import javax.swing.JPanel;
  */
 public class Window extends JFrame {
 
-    int whoseTurn;
-    Playground p;
-    Panel f;
+    Game g;
+    ButtonField bf;
     Player p1;
     Player p2;
-    Menu m1;
+    private int whoseTurn = 1;
+    private int gameStatus = 0;
+    Menu m;
+    private boolean filledWithAL = false;
+    //Starter s;
 
-    public Window() {
+    public Window(int a, String name1, String name2) {
         super("Piškvorky");
-        this.setSize(1000, 698);
+        this.setSize(1000, 688);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(null);
-        p = new Playground(30);
-        f = new Panel(p);
-        this.add(f, 0, 0);
+        this.setResizable(false);
+        this.setBackground(Color.pink);
+        g = new Game(a);
+        bf = new ButtonField(this);
+        this.add(bf);
+        p1 = new PCPlayer(name1, 1, this);
+        p2 = new PCPlayer(name2, 2, this);
+        m = new Menu(this, 660, 0, 340, 688, name1, name2);
+        this.add(m);
+        this.setBackground(Color.pink);
+        //this.s = s;
 
-
-        p1 = new Player("Míša", 700, 10, 300, 200);
-        this.add(p1);
-        p2 = new Player("Zdeněk", 700, 220, 300, 200);
-        this.add(p2);
-        m1 = new Menu(700, 430, 300, 200);
-        this.add(m1);
-
-        whoseTurn = 1;
 
 
     }
 
-    public void restart() {
-        p.playground = new Button[p.size][p.size];
+    public void setFilledWithAL(boolean filledWithAL) {
+        this.filledWithAL = filledWithAL;
+    }
 
-        for (int i = 0; i < p.size; i++) {
-            for (int j = 0; j < p.size; j++) {
-                p.playground[i][j] = new Button();
-            }
-        }
-        whoseTurn = 1;
-        this.remove(f);
-        f.removeAll();
+    public boolean isFilledWithAL() {
+        return filledWithAL;
+    }
 
-        for (int i = 0; i < p.size; i++) {
-            for (int j = 0; j < p.size; j++) {
+    public int getWhoseTurn() {
+        return whoseTurn;
+    }
 
-                f.add(p.playground[i][j]);
-
-            }
-        }
-        this.add(f);
-        this.setVisible(false);
-        this.setVisible(true);
+    public void setWhoseTurn(int whoseTurn) {
+        this.whoseTurn = whoseTurn;
 
     }
 
-    public class Panel extends JPanel {
+    public void setP1(Player p1) {
+        this.p1 = p1;
+    }
 
-        public Panel(Playground p) {
-            this.setSize(660, 660);
-            this.setLayout(new GridLayout(p.size, p.size));
+    public void setP2(Player p2) {
+        this.p2 = p2;
+    }
 
-            for (int i = 0; i < p.size; i++) {
-                for (int j = 0; j < p.size; j++) {
+    public int getGameStatus() {
+        return gameStatus;
+    }
 
-                    this.add(p.playground[i][j]);
+    public void setGameStatus(int gameStatus) {
+        this.gameStatus = gameStatus;
+    }
 
-                }
-            }
+    public void switchPlayer() {
+        if (whoseTurn == 1) {
+            setWhoseTurn(2);
+            m.name1.setForeground(Color.black);
+            m.name2.setForeground(Color.blue);
+        } else {
+            setWhoseTurn(1);
+            m.name1.setForeground(Color.blue);
+            m.name2.setForeground(Color.black);
         }
     }
 
-    public class Player extends JPanel {
+    public void win() {
+        Button[][] helper = bf.getField();
+        char[][] helper2 = g.getField();
+        Image myImage;
+        ImageIcon myIcon;
+        int helper3;
 
-        JLabel name;
-        JButton autoPlay;
-        JLabel score;
-
-        public Player(String name, int x, int y, int a, int b) {
-            this.setLayout(null);
-            this.setBounds(x, y, a, b);
-
-
-            this.name = new JLabel();
-            this.autoPlay = new JButton();
-            this.score = new JLabel();
-
-            this.name.setText(name + " score:");
-            this.name.setBounds(10, 10, 200, 50);
-            this.add(this.name);
-
-            this.score.setText("0");
-            this.score.setBounds(220, 10, 50, 50);
-            this.add(score);
-
-            this.autoPlay.setText(name + " autoplay");
-            this.autoPlay.setBounds(10, 80, 250, 50);
-            this.add(autoPlay);
+        if (gameStatus == 3) {
+            m.doContinue.setVisible(true);
+            return;
+        }
+        if (gameStatus == 1) {
+            myImage = getToolkit().createImage("O2.jpg");
+            helper3 = (int) Double.parseDouble(m.score1.getText());
+            helper3++;
+            m.score1.setText(Integer.toString(helper3));
+        } else {
+            myImage = getToolkit().createImage("X2.jpg");
+            helper3 = (int) Double.parseDouble(m.score2.getText());
+            helper3++;
+            m.score2.setText(Integer.toString(helper3));
 
         }
+        myIcon = new ImageIcon(myImage);
+
+
+
+        for (int k = 0; k < g.getA(); k++) {
+            for (int l = 0; l < g.getA(); l++) {
+                helper[k][l].removeActionListener(helper[k][l]);
+            }
+        }
+        bf.setField(helper);
+        setFilledWithAL(false);
+
+        for (int k = 0; k < g.getA(); k++) {
+            for (int l = 0; l < g.getA(); l++) {
+                if (helper2[k][l] == 'w') {
+                    helper[k][l].setIcon(myIcon);
+                }
+            }
+        }
+        m.doContinue.setVisible(true);
     }
 
-    public class Menu extends JPanel {
-
-        JButton newGame;
-        JButton restart;
-        JButton continue1;
-
-        public Menu(int x, int y, int a, int b) {
-            super();
-            this.setLayout(null);
-            this.setBounds(x, y, a, b);
-
-            newGame = new JButton();
-            newGame.setText("New Game");
-            newGame.setBounds(10, 10, 115, 50);
-            this.add(newGame);
-            newGame.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent ae) {
-                    restart();
-                    p1.score.setText("0");
-                    p2.score.setText("0");
-                }
-            });
-
-            restart = new JButton();
-            restart.setText("Restart");
-            restart.setBounds(145, 10, 120, 50);
-            this.add(restart);
-            restart.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent ae) {
-                    restart();
-                    p1.score.setText("0");
-                    p2.score.setText("0");
-                }
-            });
-            
-            continue1 = new JButton();
-            continue1.setText("Continue");
-            continue1.setBounds(10, 80, 250, 50);
-            this.add(continue1);
-            continue1.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent ae) {
-                    restart();
-
-                }
-            });
-
-        }
-    }
-
-    public class Playground extends JButton {
-
-        int size;
-        Button[][] playground;
-
-        public Playground(int size) {
-
-
-
-            this.size = size;
-            this.playground = new Button[size][size];
-
-            for (int i = 0; i < size; i++) {
-                for (int j = 0; j < size; j++) {
-                    playground[i][j] = new Button();
-                }
-            }
-
-        }
-
-        public void winnerCheck(int whoseTurn) {
-            int follow = 0;
-            String symbol;
-            Image myImage;
-            ImageIcon myIcon;
-
-            if (whoseTurn == 1) {
-                myImage = getToolkit().createImage("O2.jpg");
-
-                myIcon = new ImageIcon(myImage);
-                symbol = "O";
-            } else {
-                myImage = getToolkit().createImage("X2.jpg");
-                myIcon = new ImageIcon(myImage);
-                symbol = "X";
-            }
-
-
-            // checks horizontal lines
-            for (int i = 0; i < size; i++) {
-                for (int j = 0; j < size; j++) {
-                    if (playground[i][j].text.equals(symbol)) {
-                        follow++;
-                    } else {
-                        follow = 0;
+    public void run() {
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+                while (gameStatus == 0) {
+                    try {
+                        Thread.sleep(50);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Window.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    if (follow == 5) {
-                        playground[i][j].setIcon(myIcon);
-                        playground[i][j - 1].setIcon(myIcon);
-                        playground[i][j - 2].setIcon(myIcon);
-                        playground[i][j - 3].setIcon(myIcon);
-                        playground[i][j - 4].setIcon(myIcon);
-
-                        win(whoseTurn);
-                    }
-                }
-            }
-            follow = 0;
-            // check vertical lines
-            for (int i = 0; i < size; i++) {
-                for (int j = 0; j < size; j++) {
-                    if (playground[j][i].text.equals(symbol)) {
-                        follow++;
-                    } else {
-                        follow = 0;
-                    }
-                    if (follow == 5) {
-                        playground[j][i].setIcon(myIcon);
-                        playground[j - 1][i].setIcon(myIcon);
-                        playground[j - 2][i].setIcon(myIcon);
-                        playground[j - 3][i].setIcon(myIcon);
-                        playground[j - 4][i].setIcon(myIcon);
-                        win(whoseTurn);
-
-                    }
-                }
-            }
-            follow = 0;
-
-            // checks diagonals
-            for (int i = 2; i < size - 2; i++) {
-                for (int j = 2; j < size - 2; j++) {
-                    if (playground[i][j].text.equals(playground[i + 1][j + 1].text) && playground[i][j].text.equals(playground[i + 2][j + 2].text) && playground[i][j].text.equals(playground[i - 1][j - 1].text) && playground[i][j].text.equals(playground[i - 2][j - 2].text) && playground[i][j].text.equals(symbol)) {
-                        playground[i + 1][j + 1].setIcon(myIcon);
-                        playground[i + 2][j + 2].setIcon(myIcon);
-                        playground[i - 1][j - 1].setIcon(myIcon);
-                        playground[i - 2][j - 2].setIcon(myIcon);
-                        playground[i][j].setIcon(myIcon);
-
-                        win(whoseTurn);
-
-                    }
-                    if (playground[i][j].text.equals(playground[i + 1][j - 1].text) && playground[i][j].text.equals(playground[i + 2][j - 2].text) && playground[i][j].text.equals(playground[i - 1][j + 1].text) && playground[i][j].text.equals(playground[i - 2][j + 2].text) && playground[i][j].text.equals(symbol)) {
-                        playground[i + 1][j - 1].setIcon(myIcon);
-                        playground[i + 2][j - 2].setIcon(myIcon);
-                        playground[i - 1][j + 1].setIcon(myIcon);
-                        playground[i - 2][j + 2].setIcon(myIcon);
-                        playground[i][j].setIcon(myIcon);
-                        win(whoseTurn);
-                    }
-                }
-            }
-
-
-            // check if there are still options left
-            for (int i = 0; i < size; i++) {
-                for (int j = 0; j < size - 1; j++) {
-                    if (!".".equals(playground[j][i].text)) {
-                        follow++;
-                    } else {
-                        follow = 0;
-                    }
-
-                }
-            }
-            if (follow == size * size) {
-                restart();
-
-            }
-        }
-
-        public void win(int a) {
-            int pom;
-
-
-            if (whoseTurn == 1) {
-                pom = (int) Double.parseDouble(p1.score.getText()) + 1;
-                p1.score.setText(Integer.toString(pom));
-            } else {
-                pom = (int) Double.parseDouble(p2.score.getText()) + 1;
-                p2.score.setText(Integer.toString(pom));
-            }
-
-            for (int i = 0; i < size; i++) {
-                for (int j = 0; j < size; j++) {
-                    playground[i][j].operable = false;
-                }
-            }
-
-        }
-    }
-
-    public class Button extends JButton implements ActionListener {
-
-        boolean operable;
-        String text = "";
-
-        public Button() {
-            super();
-            this.setText(text);
-            this.operable = true;
-            this.addActionListener(this);
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent ae) {
-            if (operable == true) {
-                switch (whoseTurn) {
-
-                    case (1):
-                        this.text = "O";
-                        Image myImage = getToolkit().createImage("O.jpg");
-                        ImageIcon myIcon = new ImageIcon(myImage);
-                        this.setIcon(myIcon);
-                        operable = false;
-                        p.winnerCheck(whoseTurn);
-                        whoseTurn = 2;
+                    if (getGameStatus() != 0) {
                         break;
+                    }
+                    if (whoseTurn == 1) {
+                        p1.makeMove();
 
-                    case (2):
-                        this.text = "X";
-                        Image myImage2 = getToolkit().createImage("X.jpg");
-                        ImageIcon myIcon2 = new ImageIcon(myImage2);
-                        this.setIcon(myIcon2);
-                        operable = false;
-                        p.winnerCheck(whoseTurn);
-                        whoseTurn = 1;
-                        break;
+                    } else {
+                        p2.makeMove();
+                    }
 
                 }
+                win();
             }
-        }
+        };
+        thread.setDaemon(true);
+        thread.start();
     }
 }

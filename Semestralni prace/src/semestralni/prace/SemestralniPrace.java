@@ -4,6 +4,7 @@
  */
 package semestralni.prace;
 
+
 /**
  *
  * @author Zdenek
@@ -13,9 +14,10 @@ public class SemestralniPrace {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+  
+        Starter s = new Starter();
+        s.setVisible(true);
 
-Window w = new Window();
-w.setVisible(true);
     }
 }
