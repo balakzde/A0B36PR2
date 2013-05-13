@@ -89,6 +89,7 @@ public class ButtonField extends JPanel {
      */
 
     public synchronized void loadGame() throws FileNotFoundException, IOException {
+        w.clicked = false;
         int whoseTurn;
         try (FileReader fr = new FileReader("Piskvorky.balak")) {
             a = (int) fr.read();

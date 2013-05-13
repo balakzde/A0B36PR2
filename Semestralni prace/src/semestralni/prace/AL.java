@@ -13,7 +13,7 @@ public class AL extends Player {
     String name;
     int number;
     Window w;
-    int lvl = 3;
+    int lvl = 5;
 
     public AL(String name, int number, Window w) {
         this.name = name;
@@ -237,32 +237,32 @@ public class AL extends Player {
             }
 
             for (int i = 0; i < a; i++) {
-                for (int j = 0; j < a - 4; j++) {
-                    if (helper[i][j + 4] == '.' && helper[i][j + 3] == symbol && helper[i][j + 2] == symbol && helper[i][j + 1] == symbol && helper[i][j] == '.') {
+                for (int j = 1; j < a - 4; j++) {
+                    if (helper[i][j - 1] == '.' && helper[i][j + 4] == '.' && helper[i][j + 3] == symbol && helper[i][j + 2] == symbol && helper[i][j + 1] == symbol && helper[i][j] == '.') {
                         markedField[i][j] += ((int) Math.pow(lvl, 2));
                     }
                 }
             }
 
             for (int i = 0; i < a; i++) {
-                for (int j = 4; j < a; j++) {
-                    if (helper[i][j - 4] == '.' && helper[i][j - 3] == symbol && helper[i][j - 2] == symbol && helper[i][j - 1] == symbol && helper[i][j] == '.') {
+                for (int j = 4; j < a - 1; j++) {
+                    if (helper[i][j + 1] == '.' && helper[i][j - 4] == '.' && helper[i][j - 3] == symbol && helper[i][j - 2] == symbol && helper[i][j - 1] == symbol && helper[i][j] == '.') {
                         markedField[i][j] += ((int) Math.pow(lvl, 2));
                     }
                 }
             }
 
             for (int i = 0; i < a; i++) {
-                for (int j = 0; j < a - 4; j++) {
-                    if (helper[j + 4][i] == '.' && helper[j + 3][i] == symbol && helper[j + 2][i] == symbol && helper[j + 1][i] == symbol && helper[j][i] == '.') {
+                for (int j = 1; j < a - 4; j++) {
+                    if (helper[j - 1][i] == '.' && helper[j + 4][i] == '.' && helper[j + 3][i] == symbol && helper[j + 2][i] == symbol && helper[j + 1][i] == symbol && helper[j][i] == '.') {
                         markedField[j][i] += ((int) Math.pow(lvl, 2));
                     }
                 }
             }
 
             for (int i = 0; i < a; i++) {
-                for (int j = 4; j < a; j++) {
-                    if (helper[j - 4][i] == '.' && helper[j - 3][i] == symbol && helper[j - 2][i] == symbol && helper[j - 1][i] == symbol && helper[j][i] == '.') {
+                for (int j = 4; j < a - 1; j++) {
+                    if (helper[j + 1][i] == '.' && helper[j - 4][i] == '.' && helper[j - 3][i] == symbol && helper[j - 2][i] == symbol && helper[j - 1][i] == symbol && helper[j][i] == '.') {
                         markedField[j][i] += ((int) Math.pow(lvl, 2));
                     }
                 }
@@ -469,33 +469,33 @@ public class AL extends Player {
                 }
             }
 
-            for (int i = 0; i < a - 4; i++) {
-                for (int j = 0; j < a - 4; j++) {
-                    if (helper[i + 4][j + 4] == '.' && helper[i + 3][j + 3] == symbol && helper[i + 2][j + 2] == symbol && helper[i + 1][j + 1] == symbol && helper[i][j] == '.') {
+            for (int i = 1; i < a - 4; i++) {
+                for (int j = 1; j < a - 4; j++) {
+                    if (helper[i - 1][j - 1] == '.' && helper[i + 4][j + 4] == '.' && helper[i + 3][j + 3] == symbol && helper[i + 2][j + 2] == symbol && helper[i + 1][j + 1] == symbol && helper[i][j] == '.') {
                         markedField[i][j] += ((int) Math.pow(lvl, 2));
                     }
                 }
             }
 
-            for (int i = 4; i < a; i++) {
-                for (int j = 4; j < a; j++) {
-                    if (helper[i - 4][j - 4] == '.' && helper[i - 3][j - 3] == symbol && helper[i - 2][j - 2] == symbol && helper[i - 1][j - 1] == symbol && helper[i][j] == '.') {
+            for (int i = 4; i < a - 1; i++) {
+                for (int j = 4; j < a - 1; j++) {
+                    if (helper[i + 1][j + 1] == '.' && helper[i - 4][j - 4] == '.' && helper[i - 3][j - 3] == symbol && helper[i - 2][j - 2] == symbol && helper[i - 1][j - 1] == symbol && helper[i][j] == '.') {
                         markedField[i][j] += ((int) Math.pow(lvl, 2));
                     }
                 }
             }
 
-            for (int i = 4; i < a; i++) {
-                for (int j = 0; j < a - 4; j++) {
-                    if (helper[i - 4][j + 4] == '.' && helper[i - 3][j + 3] == symbol && helper[i - 2][j + 2] == symbol && helper[i - 1][j + 1] == symbol && helper[i][j] == '.') {
+            for (int i = 4; i < a - 1; i++) {
+                for (int j = 1; j < a - 4; j++) {
+                    if (helper[i + 1][j - 1] == '.' && helper[i - 4][j + 4] == '.' && helper[i - 3][j + 3] == symbol && helper[i - 2][j + 2] == symbol && helper[i - 1][j + 1] == symbol && helper[i][j] == '.') {
                         markedField[i][j] += ((int) Math.pow(lvl, 2));
                     }
                 }
             }
 
-            for (int i = 0; i < a - 4; i++) {
-                for (int j = 4; j < a; j++) {
-                    if (helper[i + 4][j - 4] == '.' && helper[i + 3][j - 3] == symbol && helper[i + 2][j - 2] == symbol && helper[i + 1][j - 1] == symbol && helper[i][j] == '.') {
+            for (int i = 1; i < a - 4; i++) {
+                for (int j = 4; j < a - 1; j++) {
+                    if (helper[i - 1][j + 1] == '.' && helper[i + 4][j - 4] == '.' && helper[i + 3][j - 3] == symbol && helper[i + 2][j - 2] == symbol && helper[i + 1][j - 1] == symbol && helper[i][j] == '.') {
                         markedField[i][j] += ((int) Math.pow(lvl, 2));
                     }
                 }
@@ -837,10 +837,10 @@ public class AL extends Player {
                 y = numbers[random + 1];
             }
         } else {
-                x = 14;
-                y = 14;
-                w.g.doMove(x, y, w.getWhoseTurn());
-            
+            x = 14;
+            y = 14;
+            w.g.doMove(x, y, w.getWhoseTurn());
+
         }
 
         buttonField[x][y].changeField();
@@ -860,5 +860,4 @@ public class AL extends Player {
     public void setName(String name) {
         this.name = name;
     }
-    
 }

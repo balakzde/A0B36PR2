@@ -154,6 +154,7 @@ public class Menu extends JPanel {
     }
 
     public void doContinue() throws InterruptedException {
+        w.clicked = false;
         w.setGameStatus(0);
         w.g.restart();
         w.bf.restart();
@@ -203,8 +204,7 @@ public class Menu extends JPanel {
 
         if (w.p1 instanceof PCPlayer) {
             w.p1 = new AL(w.p1.getName(), w.p1.getNumber(), w);
-            autoplay1.setBackground(Color.yellow);
-
+            autoplay1.setBackground(Color.yellow);         
         } else {
             autoplay1.setBackground(restartGame.getBackground());
             w.p1 = new PCPlayer(w.p1.getName(), w.p1.getNumber(), w);
@@ -216,7 +216,6 @@ public class Menu extends JPanel {
     public void computer2() {
         if (w.p2 instanceof PCPlayer) {
             w.p2 = new AL(w.p2.getName(), w.p2.getNumber(), w);
-
             autoplay2.setBackground(Color.yellow);
 
         } else {
