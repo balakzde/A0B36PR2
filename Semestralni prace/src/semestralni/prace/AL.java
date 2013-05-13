@@ -103,6 +103,41 @@ public class AL extends Player {
                     }
                 }
             }
+            
+                        for (int i = 0; i < a; i++) {
+                for (int j = 1; j < a - 1; j++) {
+                    if (helper[i][j - 1] == symbol &&helper[i][j + 1] == symbol && helper[i][j] == '.') {
+                        markedField[i][j]+=2;
+
+                    }
+                }
+            }
+
+            for (int i = 0; i < a; i++) {
+                for (int j = 1; j < a-1; j++) {
+                    if (helper[i][j + 1] == symbol && helper[i][j - 1] == symbol && helper[i][j] == '.') {
+                        markedField[i][j]+=2;
+                    }
+                }
+            }
+
+            for (int i = 0; i < a; i++) {
+                for (int j = 1; j < a - 1; j++) {
+                    if (helper[j - 1][i] == symbol && helper[j + 1][i] == symbol && helper[j][i] == '.') {
+                        markedField[j][i]+=2;
+                    }
+                }
+            }
+
+            for (int i = 0; i < a; i++) {
+                for (int j = 1; j < a-1; j++) {
+                    if (helper[j + 1][i] == symbol && helper[j - 1][i] == symbol && helper[j][i] == '.') {
+                        markedField[j][i]+=2;
+                    }
+                }
+            }
+
+            
             for (int i = 0; i < a; i++) {
                 for (int j = 0; j < a - 2; j++) {
                     if (helper[i][j + 2] == symbol && helper[i][j + 1] == symbol && helper[i][j] == '.') {
@@ -302,6 +337,40 @@ public class AL extends Player {
                 }
             }
 
+            
+            for (int i =1; i < a - 1; i++) {
+                for (int j = 1; j < a - 1; j++) {
+                    if (helper[i - 1][j - 1] == symbol && helper[i + 1][j + 1] == symbol && helper[i][j] == '.') {
+                        markedField[i][j]+=2;
+                    }
+                }
+            }
+
+            for (int i = 1; i < a-1; i++) {
+                for (int j = 1; j < a-1; j++) {
+                    if (helper[i + 1][j + 1] == symbol && helper[i - 1][j - 1] == symbol && helper[i][j] == '.') {
+                        markedField[i][j]+=2;
+                    }
+                }
+            }
+
+            for (int i = 1; i < a-1; i++) {
+                for (int j = 1; j < a - 1; j++) {
+                    if (helper[i + 1][j - 1] == symbol && helper[i - 1][j + 1] == symbol && helper[i][j] == '.') {
+                        markedField[i][j]+=2;
+                    }
+                }
+            }
+
+            for (int i = 1; i < a - 1; i++) {
+                for (int j = 1; j < a-1; j++) {
+                    if (helper[i - 1][j + 1] == symbol && helper[i + 1][j - 1] == symbol && helper[i][j] == '.') {
+                        markedField[i][j]+=2;
+                    }
+                }
+            }
+
+            
             for (int i = 0; i < a - 2; i++) {
                 for (int j = 0; j < a - 2; j++) {
                     if (helper[i + 2][j + 2] == symbol && helper[i + 1][j + 1] == symbol && helper[i][j] == '.') {
