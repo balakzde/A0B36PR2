@@ -13,6 +13,7 @@ public class AL extends Player {
     String name;
     int number;
     Window w;
+    int lvl = 3;
 
     public AL(String name, int number, Window w) {
         this.name = name;
@@ -103,20 +104,20 @@ public class AL extends Player {
                     }
                 }
             }
-            
-                        for (int i = 0; i < a; i++) {
+
+            for (int i = 0; i < a; i++) {
                 for (int j = 1; j < a - 1; j++) {
-                    if (helper[i][j - 1] == symbol &&helper[i][j + 1] == symbol && helper[i][j] == '.') {
-                        markedField[i][j]+=2;
+                    if (helper[i][j - 1] == symbol && helper[i][j + 1] == symbol && helper[i][j] == '.') {
+                        markedField[i][j] += ((int) Math.pow(lvl, 1));
 
                     }
                 }
             }
 
             for (int i = 0; i < a; i++) {
-                for (int j = 1; j < a-1; j++) {
+                for (int j = 1; j < a - 1; j++) {
                     if (helper[i][j + 1] == symbol && helper[i][j - 1] == symbol && helper[i][j] == '.') {
-                        markedField[i][j]+=2;
+                        markedField[i][j] += ((int) Math.pow(lvl, 1));
                     }
                 }
             }
@@ -124,24 +125,24 @@ public class AL extends Player {
             for (int i = 0; i < a; i++) {
                 for (int j = 1; j < a - 1; j++) {
                     if (helper[j - 1][i] == symbol && helper[j + 1][i] == symbol && helper[j][i] == '.') {
-                        markedField[j][i]+=2;
+                        markedField[j][i] += ((int) Math.pow(lvl, 1));
                     }
                 }
             }
 
             for (int i = 0; i < a; i++) {
-                for (int j = 1; j < a-1; j++) {
+                for (int j = 1; j < a - 1; j++) {
                     if (helper[j + 1][i] == symbol && helper[j - 1][i] == symbol && helper[j][i] == '.') {
-                        markedField[j][i]+=2;
+                        markedField[j][i] += ((int) Math.pow(lvl, 1));
                     }
                 }
             }
 
-            
+
             for (int i = 0; i < a; i++) {
                 for (int j = 0; j < a - 2; j++) {
                     if (helper[i][j + 2] == symbol && helper[i][j + 1] == symbol && helper[i][j] == '.') {
-                        markedField[i][j] += 2;
+                        markedField[i][j] += ((int) Math.pow(lvl, 1));
                     }
                 }
             }
@@ -149,7 +150,7 @@ public class AL extends Player {
             for (int i = 0; i < a; i++) {
                 for (int j = 2; j < a; j++) {
                     if (helper[i][j - 2] == symbol && helper[i][j - 1] == symbol && helper[i][j] == '.') {
-                        markedField[i][j] += 2;
+                        markedField[i][j] += ((int) Math.pow(lvl, 1));
                     }
                 }
             }
@@ -157,7 +158,7 @@ public class AL extends Player {
             for (int i = 0; i < a; i++) {
                 for (int j = 0; j < a - 2; j++) {
                     if (helper[j + 2][i] == symbol && helper[j + 1][i] == symbol && helper[j][i] == '.') {
-                        markedField[j][i] += 2;
+                        markedField[j][i] += ((int) Math.pow(lvl, 1));
                     }
                 }
             }
@@ -165,7 +166,7 @@ public class AL extends Player {
             for (int i = 0; i < a; i++) {
                 for (int j = 2; j < a; j++) {
                     if (helper[j - 2][i] == symbol && helper[j - 1][i] == symbol && helper[j][i] == '.') {
-                        markedField[j][i] += 2;
+                        markedField[j][i] += ((int) Math.pow(lvl, 1));
                     }
                 }
             }
@@ -173,7 +174,7 @@ public class AL extends Player {
             for (int i = 0; i < a; i++) {
                 for (int j = 1; j < a - 2; j++) {
                     if (helper[i][j - 1] == symbol && helper[i][j + 2] == symbol && helper[i][j + 1] == symbol && helper[i][j] == '.') {
-                        markedField[i][j] += 4;
+                        markedField[i][j] += ((int) Math.pow(lvl, 2));
                     }
                 }
             }
@@ -181,7 +182,7 @@ public class AL extends Player {
             for (int i = 0; i < a; i++) {
                 for (int j = 2; j < a - 1; j++) {
                     if (helper[i][j + 1] == symbol && helper[i][j - 2] == symbol && helper[i][j - 1] == symbol && helper[i][j] == '.') {
-                        markedField[i][j] += 4;
+                        markedField[i][j] += ((int) Math.pow(lvl, 2));
                     }
                 }
             }
@@ -189,7 +190,7 @@ public class AL extends Player {
             for (int i = 0; i < a; i++) {
                 for (int j = 1; j < a - 2; j++) {
                     if (helper[j - 1][i] == symbol && helper[j + 2][i] == symbol && helper[j + 1][i] == symbol && helper[j][i] == '.') {
-                        markedField[j][i] += 4;
+                        markedField[j][i] += ((int) Math.pow(lvl, 2));
                     }
                 }
             }
@@ -197,7 +198,7 @@ public class AL extends Player {
             for (int i = 0; i < a; i++) {
                 for (int j = 2; j < a - 1; j++) {
                     if (helper[j + 1][i] == symbol && helper[j - 2][i] == symbol && helper[j - 1][i] == symbol && helper[j][i] == '.') {
-                        markedField[j][i] += 4;
+                        markedField[j][i] += ((int) Math.pow(lvl, 2));
                     }
                 }
             }
@@ -206,7 +207,7 @@ public class AL extends Player {
             for (int i = 0; i < a; i++) {
                 for (int j = 0; j < a - 3; j++) {
                     if (helper[i][j + 3] == symbol && helper[i][j + 2] == symbol && helper[i][j + 1] == symbol && helper[i][j] == '.') {
-                        markedField[i][j] += 4;
+                        markedField[i][j] += ((int) Math.pow(lvl, 2));
                     }
                 }
             }
@@ -214,7 +215,7 @@ public class AL extends Player {
             for (int i = 0; i < a; i++) {
                 for (int j = 3; j < a; j++) {
                     if (helper[i][j - 3] == symbol && helper[i][j - 2] == symbol && helper[i][j - 1] == symbol && helper[i][j] == '.') {
-                        markedField[i][j] += 4;
+                        markedField[i][j] += ((int) Math.pow(lvl, 2));
                     }
                 }
             }
@@ -222,7 +223,7 @@ public class AL extends Player {
             for (int i = 0; i < a; i++) {
                 for (int j = 0; j < a - 3; j++) {
                     if (helper[j + 3][i] == symbol && helper[j + 2][i] == symbol && helper[j + 1][i] == symbol && helper[j][i] == '.') {
-                        markedField[j][i] += 4;
+                        markedField[j][i] += ((int) Math.pow(lvl, 2));
                     }
                 }
             }
@@ -230,7 +231,7 @@ public class AL extends Player {
             for (int i = 0; i < a; i++) {
                 for (int j = 3; j < a; j++) {
                     if (helper[j - 3][i] == symbol && helper[j - 2][i] == symbol && helper[j - 1][i] == symbol && helper[j][i] == '.') {
-                        markedField[j][i] += 4;
+                        markedField[j][i] += ((int) Math.pow(lvl, 2));
                     }
                 }
             }
@@ -238,7 +239,7 @@ public class AL extends Player {
             for (int i = 0; i < a; i++) {
                 for (int j = 0; j < a - 4; j++) {
                     if (helper[i][j + 4] == '.' && helper[i][j + 3] == symbol && helper[i][j + 2] == symbol && helper[i][j + 1] == symbol && helper[i][j] == '.') {
-                        markedField[i][j] += 4;
+                        markedField[i][j] += ((int) Math.pow(lvl, 2));
                     }
                 }
             }
@@ -246,7 +247,7 @@ public class AL extends Player {
             for (int i = 0; i < a; i++) {
                 for (int j = 4; j < a; j++) {
                     if (helper[i][j - 4] == '.' && helper[i][j - 3] == symbol && helper[i][j - 2] == symbol && helper[i][j - 1] == symbol && helper[i][j] == '.') {
-                        markedField[i][j] += 4;
+                        markedField[i][j] += ((int) Math.pow(lvl, 2));
                     }
                 }
             }
@@ -254,7 +255,7 @@ public class AL extends Player {
             for (int i = 0; i < a; i++) {
                 for (int j = 0; j < a - 4; j++) {
                     if (helper[j + 4][i] == '.' && helper[j + 3][i] == symbol && helper[j + 2][i] == symbol && helper[j + 1][i] == symbol && helper[j][i] == '.') {
-                        markedField[j][i] += 4;
+                        markedField[j][i] += ((int) Math.pow(lvl, 2));
                     }
                 }
             }
@@ -262,7 +263,7 @@ public class AL extends Player {
             for (int i = 0; i < a; i++) {
                 for (int j = 4; j < a; j++) {
                     if (helper[j - 4][i] == '.' && helper[j - 3][i] == symbol && helper[j - 2][i] == symbol && helper[j - 1][i] == symbol && helper[j][i] == '.') {
-                        markedField[j][i] += 4;
+                        markedField[j][i] += ((int) Math.pow(lvl, 2));
                     }
                 }
             }
@@ -272,7 +273,7 @@ public class AL extends Player {
             for (int i = 0; i < a; i++) {
                 for (int j = 0; j < a - 4; j++) {
                     if (helper[i][j + 4] == symbol && helper[i][j + 3] == symbol && helper[i][j + 2] == symbol && helper[i][j + 1] == symbol && helper[i][j] == '.') {
-                        markedField[i][j] += 8;
+                        markedField[i][j] += ((int) Math.pow(lvl, 3));
                     }
                 }
             }
@@ -280,7 +281,7 @@ public class AL extends Player {
             for (int i = 0; i < a; i++) {
                 for (int j = 4; j < a; j++) {
                     if (helper[i][j - 4] == symbol && helper[i][j - 3] == symbol && helper[i][j - 2] == symbol && helper[i][j - 1] == symbol && helper[i][j] == '.') {
-                        markedField[i][j] += 8;
+                        markedField[i][j] += ((int) Math.pow(lvl, 3));
                     }
                 }
             }
@@ -288,7 +289,7 @@ public class AL extends Player {
             for (int i = 0; i < a; i++) {
                 for (int j = 0; j < a - 4; j++) {
                     if (helper[j + 4][i] == symbol && helper[j + 3][i] == symbol && helper[j + 2][i] == symbol && helper[j + 1][i] == symbol && helper[j][i] == '.') {
-                        markedField[j][i] += 8;
+                        markedField[j][i] += ((int) Math.pow(lvl, 3));
                     }
                 }
             }
@@ -296,7 +297,7 @@ public class AL extends Player {
             for (int i = 0; i < a; i++) {
                 for (int j = 4; j < a; j++) {
                     if (helper[j - 4][i] == symbol && helper[j - 3][i] == symbol && helper[j - 2][i] == symbol && helper[j - 1][i] == symbol && helper[j][i] == '.') {
-                        markedField[j][i] += 8;
+                        markedField[j][i] += ((int) Math.pow(lvl, 3));
                     }
                 }
             }
@@ -337,44 +338,44 @@ public class AL extends Player {
                 }
             }
 
-            
-            for (int i =1; i < a - 1; i++) {
+
+            for (int i = 1; i < a - 1; i++) {
                 for (int j = 1; j < a - 1; j++) {
                     if (helper[i - 1][j - 1] == symbol && helper[i + 1][j + 1] == symbol && helper[i][j] == '.') {
-                        markedField[i][j]+=2;
-                    }
-                }
-            }
-
-            for (int i = 1; i < a-1; i++) {
-                for (int j = 1; j < a-1; j++) {
-                    if (helper[i + 1][j + 1] == symbol && helper[i - 1][j - 1] == symbol && helper[i][j] == '.') {
-                        markedField[i][j]+=2;
-                    }
-                }
-            }
-
-            for (int i = 1; i < a-1; i++) {
-                for (int j = 1; j < a - 1; j++) {
-                    if (helper[i + 1][j - 1] == symbol && helper[i - 1][j + 1] == symbol && helper[i][j] == '.') {
-                        markedField[i][j]+=2;
+                        markedField[i][j] += ((int) Math.pow(lvl, 1));
                     }
                 }
             }
 
             for (int i = 1; i < a - 1; i++) {
-                for (int j = 1; j < a-1; j++) {
-                    if (helper[i - 1][j + 1] == symbol && helper[i + 1][j - 1] == symbol && helper[i][j] == '.') {
-                        markedField[i][j]+=2;
+                for (int j = 1; j < a - 1; j++) {
+                    if (helper[i + 1][j + 1] == symbol && helper[i - 1][j - 1] == symbol && helper[i][j] == '.') {
+                        markedField[i][j] += ((int) Math.pow(lvl, 1));
                     }
                 }
             }
 
-            
+            for (int i = 1; i < a - 1; i++) {
+                for (int j = 1; j < a - 1; j++) {
+                    if (helper[i + 1][j - 1] == symbol && helper[i - 1][j + 1] == symbol && helper[i][j] == '.') {
+                        markedField[i][j] += ((int) Math.pow(lvl, 1));
+                    }
+                }
+            }
+
+            for (int i = 1; i < a - 1; i++) {
+                for (int j = 1; j < a - 1; j++) {
+                    if (helper[i - 1][j + 1] == symbol && helper[i + 1][j - 1] == symbol && helper[i][j] == '.') {
+                        markedField[i][j] += ((int) Math.pow(lvl, 1));
+                    }
+                }
+            }
+
+
             for (int i = 0; i < a - 2; i++) {
                 for (int j = 0; j < a - 2; j++) {
                     if (helper[i + 2][j + 2] == symbol && helper[i + 1][j + 1] == symbol && helper[i][j] == '.') {
-                        markedField[i][j] += 2;
+                        markedField[i][j] += ((int) Math.pow(lvl, 1));
                     }
                 }
             }
@@ -382,7 +383,7 @@ public class AL extends Player {
             for (int i = 2; i < a; i++) {
                 for (int j = 2; j < a; j++) {
                     if (helper[i - 2][j - 2] == symbol && helper[i - 1][j - 1] == symbol && helper[i][j] == '.') {
-                        markedField[i][j] += 2;
+                        markedField[i][j] += ((int) Math.pow(lvl, 1));
                     }
                 }
             }
@@ -390,7 +391,7 @@ public class AL extends Player {
             for (int i = 2; i < a; i++) {
                 for (int j = 0; j < a - 2; j++) {
                     if (helper[i - 2][j + 2] == symbol && helper[i - 1][j + 1] == symbol && helper[i][j] == '.') {
-                        markedField[i][j] += 2;
+                        markedField[i][j] += ((int) Math.pow(lvl, 1));
                     }
                 }
             }
@@ -398,7 +399,7 @@ public class AL extends Player {
             for (int i = 0; i < a - 2; i++) {
                 for (int j = 2; j < a; j++) {
                     if (helper[i + 2][j - 2] == symbol && helper[i + 1][j - 1] == symbol && helper[i][j] == '.') {
-                        markedField[i][j] += 2;
+                        markedField[i][j] += ((int) Math.pow(lvl, 1));
                     }
                 }
             }
@@ -406,7 +407,7 @@ public class AL extends Player {
             for (int i = 1; i < a - 2; i++) {
                 for (int j = 1; j < a - 2; j++) {
                     if (helper[i - 1][j - 1] == symbol && helper[i + 2][j + 2] == symbol && helper[i + 1][j + 1] == symbol && helper[i][j] == '.') {
-                        markedField[i][j] += 4;
+                        markedField[i][j] += ((int) Math.pow(lvl, 2));
                     }
                 }
             }
@@ -414,7 +415,7 @@ public class AL extends Player {
             for (int i = 2; i < a - 1; i++) {
                 for (int j = 2; j < a - 1; j++) {
                     if (helper[i + 1][j + 1] == symbol && helper[i - 2][j - 2] == symbol && helper[i - 1][j - 1] == symbol && helper[i][j] == '.') {
-                        markedField[i][j] += 4;
+                        markedField[i][j] += ((int) Math.pow(lvl, 2));
                     }
                 }
             }
@@ -422,7 +423,7 @@ public class AL extends Player {
             for (int i = 2; i < a - 1; i++) {
                 for (int j = 1; j < a - 2; j++) {
                     if (helper[i + 1][j - 1] == symbol && helper[i - 2][j + 2] == symbol && helper[i - 1][j + 1] == symbol && helper[i][j] == '.') {
-                        markedField[i][j] += 4;
+                        markedField[i][j] += ((int) Math.pow(lvl, 2));
                     }
                 }
             }
@@ -430,7 +431,7 @@ public class AL extends Player {
             for (int i = 1; i < a - 2; i++) {
                 for (int j = 2; j < a - 1; j++) {
                     if (helper[i - 1][j + 1] == symbol && helper[i + 2][j - 2] == symbol && helper[i + 1][j - 1] == symbol && helper[i][j] == '.') {
-                        markedField[i][j] += 4;
+                        markedField[i][j] += ((int) Math.pow(lvl, 2));
                     }
                 }
             }
@@ -439,7 +440,7 @@ public class AL extends Player {
             for (int i = 0; i < a - 3; i++) {
                 for (int j = 0; j < a - 3; j++) {
                     if (helper[i + 3][j + 3] == symbol && helper[i + 2][j + 2] == symbol && helper[i + 1][j + 1] == symbol && helper[i][j] == '.') {
-                        markedField[i][j] += 4;
+                        markedField[i][j] += ((int) Math.pow(lvl, 2));
                     }
                 }
             }
@@ -447,7 +448,7 @@ public class AL extends Player {
             for (int i = 3; i < a; i++) {
                 for (int j = 3; j < a; j++) {
                     if (helper[i - 3][j - 3] == symbol && helper[i - 2][j - 2] == symbol && helper[i - 1][j - 1] == symbol && helper[i][j] == '.') {
-                        markedField[i][j] += 4;
+                        markedField[i][j] += ((int) Math.pow(lvl, 2));
                     }
                 }
             }
@@ -455,7 +456,7 @@ public class AL extends Player {
             for (int i = 3; i < a; i++) {
                 for (int j = 0; j < a - 3; j++) {
                     if (helper[i - 3][j + 3] == symbol && helper[i - 2][j + 2] == symbol && helper[i - 1][j + 1] == symbol && helper[i][j] == '.') {
-                        markedField[i][j] += 4;
+                        markedField[i][j] += ((int) Math.pow(lvl, 2));
                     }
                 }
             }
@@ -463,7 +464,7 @@ public class AL extends Player {
             for (int i = 0; i < a - 3; i++) {
                 for (int j = 3; j < a; j++) {
                     if (helper[i + 3][j - 3] == symbol && helper[i + 2][j - 2] == symbol && helper[i + 1][j - 1] == symbol && helper[i][j] == '.') {
-                        markedField[i][j] += 4;
+                        markedField[i][j] += ((int) Math.pow(lvl, 2));
                     }
                 }
             }
@@ -471,7 +472,7 @@ public class AL extends Player {
             for (int i = 0; i < a - 4; i++) {
                 for (int j = 0; j < a - 4; j++) {
                     if (helper[i + 4][j + 4] == '.' && helper[i + 3][j + 3] == symbol && helper[i + 2][j + 2] == symbol && helper[i + 1][j + 1] == symbol && helper[i][j] == '.') {
-                        markedField[i][j] += 4;
+                        markedField[i][j] += ((int) Math.pow(lvl, 2));
                     }
                 }
             }
@@ -479,7 +480,7 @@ public class AL extends Player {
             for (int i = 4; i < a; i++) {
                 for (int j = 4; j < a; j++) {
                     if (helper[i - 4][j - 4] == '.' && helper[i - 3][j - 3] == symbol && helper[i - 2][j - 2] == symbol && helper[i - 1][j - 1] == symbol && helper[i][j] == '.') {
-                        markedField[i][j] += 4;
+                        markedField[i][j] += ((int) Math.pow(lvl, 2));
                     }
                 }
             }
@@ -487,7 +488,7 @@ public class AL extends Player {
             for (int i = 4; i < a; i++) {
                 for (int j = 0; j < a - 4; j++) {
                     if (helper[i - 4][j + 4] == '.' && helper[i - 3][j + 3] == symbol && helper[i - 2][j + 2] == symbol && helper[i - 1][j + 1] == symbol && helper[i][j] == '.') {
-                        markedField[i][j] += 4;
+                        markedField[i][j] += ((int) Math.pow(lvl, 2));
                     }
                 }
             }
@@ -495,7 +496,7 @@ public class AL extends Player {
             for (int i = 0; i < a - 4; i++) {
                 for (int j = 4; j < a; j++) {
                     if (helper[i + 4][j - 4] == '.' && helper[i + 3][j - 3] == symbol && helper[i + 2][j - 2] == symbol && helper[i + 1][j - 1] == symbol && helper[i][j] == '.') {
-                        markedField[i][j] += 4;
+                        markedField[i][j] += ((int) Math.pow(lvl, 2));
                     }
                 }
             }
@@ -505,7 +506,7 @@ public class AL extends Player {
             for (int i = 0; i < a - 4; i++) {
                 for (int j = 0; j < a - 4; j++) {
                     if (helper[i + 4][j + 4] == symbol && helper[i + 3][j + 3] == symbol && helper[i + 2][j + 2] == symbol && helper[i + 1][j + 1] == symbol && helper[i][j] == '.') {
-                        markedField[i][j] += 8;
+                        markedField[i][j] += ((int) Math.pow(lvl, 3));
                     }
                 }
             }
@@ -513,7 +514,7 @@ public class AL extends Player {
             for (int i = 4; i < a; i++) {
                 for (int j = 4; j < a; j++) {
                     if (helper[i - 4][j - 4] == symbol && helper[i - 3][j - 3] == symbol && helper[i - 2][j - 2] == symbol && helper[i - 1][j - 1] == symbol && helper[i][j] == '.') {
-                        markedField[i][j] += 8;
+                        markedField[i][j] += ((int) Math.pow(lvl, 3));
                     }
                 }
             }
@@ -521,7 +522,7 @@ public class AL extends Player {
             for (int i = 4; i < a; i++) {
                 for (int j = 0; j < a - 4; j++) {
                     if (helper[i - 4][j + 4] == symbol && helper[i - 3][j + 3] == symbol && helper[i - 2][j + 2] == symbol && helper[i - 1][j + 1] == symbol && helper[i][j] == '.') {
-                        markedField[i][j] += 8;
+                        markedField[i][j] += ((int) Math.pow(lvl, 3));
                     }
                 }
             }
@@ -529,108 +530,108 @@ public class AL extends Player {
             for (int i = 0; i < a - 4; i++) {
                 for (int j = 4; j < a; j++) {
                     if (helper[i + 4][j - 4] == symbol && helper[i + 3][j - 3] == symbol && helper[i + 2][j - 2] == symbol && helper[i + 1][j - 1] == symbol && helper[i][j] == '.') {
-                        markedField[i][j] += 8;
+                        markedField[i][j] += ((int) Math.pow(lvl, 3));
                     }
                 }
             }
 
-            
-                    for (int i = 0; i < a; i++) {
-            for (int j = 2; j < a - 2; j++) {
-                if (helper[i][j + 2] == symbol && helper[i][j + 1] == symbol && helper[i][j - 2] == symbol && helper[i][j - 1] == symbol && helper[i][j] == '.') {
-                    markedField[i][j] += 8;
+
+            for (int i = 0; i < a; i++) {
+                for (int j = 2; j < a - 2; j++) {
+                    if (helper[i][j + 2] == symbol && helper[i][j + 1] == symbol && helper[i][j - 2] == symbol && helper[i][j - 1] == symbol && helper[i][j] == '.') {
+                        markedField[i][j] += ((int) Math.pow(lvl, 3));
+                    }
                 }
             }
-        }
 
-        for (int i = 0; i < a; i++) {
-            for (int j = 2; j < a - 2; j++) {
-                if (helper[j - 2][i] == symbol && helper[j - 1][i] == symbol && helper[j + 2][i] == symbol && helper[j + 1][i] == symbol && helper[j][i] == '.') {
-                    markedField[j][i] += 8;
+            for (int i = 0; i < a; i++) {
+                for (int j = 2; j < a - 2; j++) {
+                    if (helper[j - 2][i] == symbol && helper[j - 1][i] == symbol && helper[j + 2][i] == symbol && helper[j + 1][i] == symbol && helper[j][i] == '.') {
+                        markedField[j][i] += ((int) Math.pow(lvl, 3));
+                    }
                 }
             }
-        }
 
 
-        for (int i = 2; i < a - 2; i++) {
-            for (int j = 2; j < a - 2; j++) {
-                if (helper[i + 2][j + 2] == symbol && helper[i + 1][j + 1] == symbol && helper[i - 2][j - 2] == symbol && helper[i - 1][j - 1] == symbol && helper[i][j] == '.') {
-                    markedField[i][j] += 8;
+            for (int i = 2; i < a - 2; i++) {
+                for (int j = 2; j < a - 2; j++) {
+                    if (helper[i + 2][j + 2] == symbol && helper[i + 1][j + 1] == symbol && helper[i - 2][j - 2] == symbol && helper[i - 1][j - 1] == symbol && helper[i][j] == '.') {
+                        markedField[i][j] += ((int) Math.pow(lvl, 3));
+                    }
                 }
             }
-        }
 
-        for (int i = 2; i < a - 2; i++) {
-            for (int j = 2; j < a - 2; j++) {
-                if (helper[i + 2][j - 2] == symbol && helper[i + 1][j - 1] == symbol && helper[i - 2][j + 2] == symbol && helper[i - 1][j + 1] == symbol && helper[i][j] == '.') {
-                    markedField[i][j] += 8;
+            for (int i = 2; i < a - 2; i++) {
+                for (int j = 2; j < a - 2; j++) {
+                    if (helper[i + 2][j - 2] == symbol && helper[i + 1][j - 1] == symbol && helper[i - 2][j + 2] == symbol && helper[i - 1][j + 1] == symbol && helper[i][j] == '.') {
+                        markedField[i][j] += ((int) Math.pow(lvl, 3));
+                    }
                 }
             }
-        }
 
-        for (int i = 0; i < a; i++) {
-            for (int j = 1; j < a - 3; j++) {
-                if (helper[i][j - 1] == symbol && helper[i][j + 3] == symbol && helper[i][j + 2] == symbol && helper[i][j + 1] == symbol && helper[i][j] == '.') {
-                    markedField[i][j] += 8;
+            for (int i = 0; i < a; i++) {
+                for (int j = 1; j < a - 3; j++) {
+                    if (helper[i][j - 1] == symbol && helper[i][j + 3] == symbol && helper[i][j + 2] == symbol && helper[i][j + 1] == symbol && helper[i][j] == '.') {
+                        markedField[i][j] += ((int) Math.pow(lvl, 3));
+                    }
                 }
             }
-        }
 
-        for (int i = 0; i < a; i++) {
-            for (int j = 3; j < a - 1; j++) {
-                if (helper[i][j + 1] == symbol && helper[i][j - 3] == symbol && helper[i][j - 2] == symbol && helper[i][j - 1] == symbol && helper[i][j] == '.') {
-                    markedField[i][j] += 8;
+            for (int i = 0; i < a; i++) {
+                for (int j = 3; j < a - 1; j++) {
+                    if (helper[i][j + 1] == symbol && helper[i][j - 3] == symbol && helper[i][j - 2] == symbol && helper[i][j - 1] == symbol && helper[i][j] == '.') {
+                        markedField[i][j] += ((int) Math.pow(lvl, 3));
+                    }
                 }
             }
-        }
 
-        for (int i = 0; i < a; i++) {
-            for (int j = 1; j < a - 3; j++) {
-                if (helper[j - 1][i] == symbol && helper[j + 3][i] == symbol && helper[j + 2][i] == symbol && helper[j + 1][i] == symbol && helper[j][i] == '.') {
-                    markedField[j][i] += 8;
+            for (int i = 0; i < a; i++) {
+                for (int j = 1; j < a - 3; j++) {
+                    if (helper[j - 1][i] == symbol && helper[j + 3][i] == symbol && helper[j + 2][i] == symbol && helper[j + 1][i] == symbol && helper[j][i] == '.') {
+                        markedField[j][i] += ((int) Math.pow(lvl, 3));
+                    }
                 }
             }
-        }
 
-        for (int i = 0; i < a; i++) {
-            for (int j = 3; j < a - 1; j++) {
-                if (helper[j + 1][i] == symbol && helper[j - 3][i] == symbol && helper[j - 2][i] == symbol && helper[j - 1][i] == symbol && helper[j][i] == '.') {
-                    markedField[j][i] += 8;
+            for (int i = 0; i < a; i++) {
+                for (int j = 3; j < a - 1; j++) {
+                    if (helper[j + 1][i] == symbol && helper[j - 3][i] == symbol && helper[j - 2][i] == symbol && helper[j - 1][i] == symbol && helper[j][i] == '.') {
+                        markedField[j][i] += ((int) Math.pow(lvl, 3));
+                    }
                 }
             }
-        }
 
-        for (int i = 1; i < a - 3; i++) {
-            for (int j = 1; j < a - 3; j++) {
-                if (helper[i - 1][j - 1] == symbol && helper[i + 3][j + 3] == symbol && helper[i + 2][j + 2] == symbol && helper[i + 1][j + 1] == symbol && helper[i][j] == '.') {
-                    markedField[i][j] += 8;
+            for (int i = 1; i < a - 3; i++) {
+                for (int j = 1; j < a - 3; j++) {
+                    if (helper[i - 1][j - 1] == symbol && helper[i + 3][j + 3] == symbol && helper[i + 2][j + 2] == symbol && helper[i + 1][j + 1] == symbol && helper[i][j] == '.') {
+                        markedField[i][j] += ((int) Math.pow(lvl, 3));
+                    }
                 }
             }
-        }
 
-        for (int i = 3; i < a - 1; i++) {
-            for (int j = 3; j < a - 1; j++) {
-                if (helper[i + 1][j + 1] == symbol && helper[i - 3][j - 3] == symbol && helper[i - 2][j - 2] == symbol && helper[i - 1][j - 1] == symbol && helper[i][j] == '.') {
-                    markedField[i][j] += 8;
+            for (int i = 3; i < a - 1; i++) {
+                for (int j = 3; j < a - 1; j++) {
+                    if (helper[i + 1][j + 1] == symbol && helper[i - 3][j - 3] == symbol && helper[i - 2][j - 2] == symbol && helper[i - 1][j - 1] == symbol && helper[i][j] == '.') {
+                        markedField[i][j] += ((int) Math.pow(lvl, 3));
+                    }
                 }
             }
-        }
 
-        for (int i = 3; i < a - 1; i++) {
-            for (int j = 1; j < a - 3; j++) {
-                if (helper[i + 1][j - 1] == symbol && helper[i - 3][j + 3] == symbol && helper[i - 2][j + 2] == symbol && helper[i - 1][j + 1] == symbol && helper[i][j] == '.') {
-                    markedField[i][j] += 8;
+            for (int i = 3; i < a - 1; i++) {
+                for (int j = 1; j < a - 3; j++) {
+                    if (helper[i + 1][j - 1] == symbol && helper[i - 3][j + 3] == symbol && helper[i - 2][j + 2] == symbol && helper[i - 1][j + 1] == symbol && helper[i][j] == '.') {
+                        markedField[i][j] += ((int) Math.pow(lvl, 3));
+                    }
                 }
             }
-        }
 
-        for (int i = 1; i < a - 3; i++) {
-            for (int j = 3; j < a - 1; j++) {
-                if (helper[i - 1][j + 1] == symbol && helper[i + 3][j - 3] == symbol && helper[i + 2][j - 2] == symbol && helper[i + 1][j - 1] == symbol && helper[i][j] == '.') {
-                    markedField[i][j] += 8;
+            for (int i = 1; i < a - 3; i++) {
+                for (int j = 3; j < a - 1; j++) {
+                    if (helper[i - 1][j + 1] == symbol && helper[i + 3][j - 3] == symbol && helper[i + 2][j - 2] == symbol && helper[i + 1][j - 1] == symbol && helper[i][j] == '.') {
+                        markedField[i][j] += ((int) Math.pow(lvl, 3));
+                    }
                 }
             }
-        }
 
 
 
@@ -640,7 +641,7 @@ public class AL extends Player {
         for (int i = 0; i < a - 4; i++) {
             for (int j = 0; j < a - 4; j++) {
                 if (helper[i + 4][j + 4] == my && helper[i + 3][j + 3] == my && helper[i + 2][j + 2] == my && helper[i + 1][j + 1] == my && helper[i][j] == '.') {
-                    markedField[i][j] += 100;
+                    markedField[i][j] += ((int) Math.pow(lvl, 5));
                 }
             }
         }
@@ -648,7 +649,7 @@ public class AL extends Player {
         for (int i = 4; i < a; i++) {
             for (int j = 4; j < a; j++) {
                 if (helper[i - 4][j - 4] == my && helper[i - 3][j - 3] == my && helper[i - 2][j - 2] == my && helper[i - 1][j - 1] == my && helper[i][j] == '.') {
-                    markedField[i][j] += 100;
+                    markedField[i][j] += ((int) Math.pow(lvl, 5));
                 }
             }
         }
@@ -656,7 +657,7 @@ public class AL extends Player {
         for (int i = 4; i < a; i++) {
             for (int j = 0; j < a - 4; j++) {
                 if (helper[i - 4][j + 4] == my && helper[i - 3][j + 3] == my && helper[i - 2][j + 2] == my && helper[i - 1][j + 1] == my && helper[i][j] == '.') {
-                    markedField[i][j] += 100;
+                    markedField[i][j] += ((int) Math.pow(lvl, 5));
                 }
             }
         }
@@ -664,7 +665,7 @@ public class AL extends Player {
         for (int i = 0; i < a - 4; i++) {
             for (int j = 4; j < a; j++) {
                 if (helper[i + 4][j - 4] == my && helper[i + 3][j - 3] == my && helper[i + 2][j - 2] == my && helper[i + 1][j - 1] == my && helper[i][j] == '.') {
-                    markedField[i][j] += 100;
+                    markedField[i][j] += ((int) Math.pow(lvl, 5));
                 }
             }
         }
@@ -676,7 +677,7 @@ public class AL extends Player {
         for (int i = 0; i < a; i++) {
             for (int j = 0; j < a - 4; j++) {
                 if (helper[i][j + 4] == my && helper[i][j + 3] == my && helper[i][j + 2] == my && helper[i][j + 1] == my && helper[i][j] == '.') {
-                    markedField[i][j] += 100;
+                    markedField[i][j] += ((int) Math.pow(lvl, 5));
                 }
             }
         }
@@ -684,7 +685,7 @@ public class AL extends Player {
         for (int i = 0; i < a; i++) {
             for (int j = 4; j < a; j++) {
                 if (helper[i][j - 4] == my && helper[i][j - 3] == my && helper[i][j - 2] == my && helper[i][j - 1] == my && helper[i][j] == '.') {
-                    markedField[i][j] += 100;
+                    markedField[i][j] += ((int) Math.pow(lvl, 5));
                 }
             }
         }
@@ -692,7 +693,7 @@ public class AL extends Player {
         for (int i = 0; i < a; i++) {
             for (int j = 0; j < a - 4; j++) {
                 if (helper[j + 4][i] == my && helper[j + 3][i] == my && helper[j + 2][i] == my && helper[j + 1][i] == my && helper[j][i] == '.') {
-                    markedField[j][i] += 100;
+                    markedField[j][i] += ((int) Math.pow(lvl, 5));
                 }
             }
         }
@@ -700,7 +701,7 @@ public class AL extends Player {
         for (int i = 0; i < a; i++) {
             for (int j = 4; j < a; j++) {
                 if (helper[j - 4][i] == my && helper[j - 3][i] == my && helper[j - 2][i] == my && helper[j - 1][i] == my && helper[j][i] == '.') {
-                    markedField[j][i] += 100;
+                    markedField[j][i] += ((int) Math.pow(lvl, 5));
                 }
             }
         }
@@ -708,7 +709,7 @@ public class AL extends Player {
         for (int i = 0; i < a; i++) {
             for (int j = 2; j < a - 2; j++) {
                 if (helper[i][j + 2] == my && helper[i][j + 1] == my && helper[i][j - 2] == my && helper[i][j - 1] == my && helper[i][j] == '.') {
-                    markedField[i][j] += 100;
+                    markedField[i][j] += ((int) Math.pow(lvl, 5));
                 }
             }
         }
@@ -716,7 +717,7 @@ public class AL extends Player {
         for (int i = 0; i < a; i++) {
             for (int j = 2; j < a - 2; j++) {
                 if (helper[j - 2][i] == my && helper[j - 1][i] == my && helper[j + 2][i] == my && helper[j + 1][i] == my && helper[j][i] == '.') {
-                    markedField[j][i] += 100;
+                    markedField[j][i] += ((int) Math.pow(lvl, 5));
                 }
             }
         }
@@ -725,7 +726,7 @@ public class AL extends Player {
         for (int i = 2; i < a - 2; i++) {
             for (int j = 2; j < a - 2; j++) {
                 if (helper[i + 2][j + 2] == my && helper[i + 1][j + 1] == my && helper[i - 2][j - 2] == my && helper[i - 1][j - 1] == my && helper[i][j] == '.') {
-                    markedField[i][j] += 100;
+                    markedField[i][j] += ((int) Math.pow(lvl, 5));
                 }
             }
         }
@@ -733,7 +734,7 @@ public class AL extends Player {
         for (int i = 2; i < a - 2; i++) {
             for (int j = 2; j < a - 2; j++) {
                 if (helper[i + 2][j - 2] == my && helper[i + 1][j - 1] == my && helper[i - 2][j + 2] == my && helper[i - 1][j + 1] == my && helper[i][j] == '.') {
-                    markedField[i][j] += 100;
+                    markedField[i][j] += ((int) Math.pow(lvl, 5));
                 }
             }
         }
@@ -741,7 +742,7 @@ public class AL extends Player {
         for (int i = 0; i < a; i++) {
             for (int j = 1; j < a - 3; j++) {
                 if (helper[i][j - 1] == my && helper[i][j + 3] == my && helper[i][j + 2] == my && helper[i][j + 1] == my && helper[i][j] == '.') {
-                    markedField[i][j] += 100;
+                    markedField[i][j] += ((int) Math.pow(lvl, 5));
                 }
             }
         }
@@ -749,7 +750,7 @@ public class AL extends Player {
         for (int i = 0; i < a; i++) {
             for (int j = 3; j < a - 1; j++) {
                 if (helper[i][j + 1] == my && helper[i][j - 3] == my && helper[i][j - 2] == my && helper[i][j - 1] == my && helper[i][j] == '.') {
-                    markedField[i][j] += 100;
+                    markedField[i][j] += ((int) Math.pow(lvl, 5));
                 }
             }
         }
@@ -757,7 +758,7 @@ public class AL extends Player {
         for (int i = 0; i < a; i++) {
             for (int j = 1; j < a - 3; j++) {
                 if (helper[j - 1][i] == my && helper[j + 3][i] == my && helper[j + 2][i] == my && helper[j + 1][i] == my && helper[j][i] == '.') {
-                    markedField[j][i] += 100;
+                    markedField[j][i] += ((int) Math.pow(lvl, 5));
                 }
             }
         }
@@ -765,7 +766,7 @@ public class AL extends Player {
         for (int i = 0; i < a; i++) {
             for (int j = 3; j < a - 1; j++) {
                 if (helper[j + 1][i] == my && helper[j - 3][i] == my && helper[j - 2][i] == my && helper[j - 1][i] == my && helper[j][i] == '.') {
-                    markedField[j][i] += 100;
+                    markedField[j][i] += ((int) Math.pow(lvl, 5));
                 }
             }
         }
@@ -773,7 +774,7 @@ public class AL extends Player {
         for (int i = 1; i < a - 3; i++) {
             for (int j = 1; j < a - 3; j++) {
                 if (helper[i - 1][j - 1] == my && helper[i + 3][j + 3] == my && helper[i + 2][j + 2] == my && helper[i + 1][j + 1] == my && helper[i][j] == '.') {
-                    markedField[i][j] += 100;
+                    markedField[i][j] += ((int) Math.pow(lvl, 5));
                 }
             }
         }
@@ -781,7 +782,7 @@ public class AL extends Player {
         for (int i = 3; i < a - 1; i++) {
             for (int j = 3; j < a - 1; j++) {
                 if (helper[i + 1][j + 1] == my && helper[i - 3][j - 3] == my && helper[i - 2][j - 2] == my && helper[i - 1][j - 1] == my && helper[i][j] == '.') {
-                    markedField[i][j] += 100;
+                    markedField[i][j] += ((int) Math.pow(lvl, 5));
                 }
             }
         }
@@ -789,7 +790,7 @@ public class AL extends Player {
         for (int i = 3; i < a - 1; i++) {
             for (int j = 1; j < a - 3; j++) {
                 if (helper[i + 1][j - 1] == my && helper[i - 3][j + 3] == my && helper[i - 2][j + 2] == my && helper[i - 1][j + 1] == my && helper[i][j] == '.') {
-                    markedField[i][j] += 100;
+                    markedField[i][j] += ((int) Math.pow(lvl, 5));
                 }
             }
         }
@@ -797,13 +798,13 @@ public class AL extends Player {
         for (int i = 1; i < a - 3; i++) {
             for (int j = 3; j < a - 1; j++) {
                 if (helper[i - 1][j + 1] == my && helper[i + 3][j - 3] == my && helper[i + 2][j - 2] == my && helper[i + 1][j - 1] == my && helper[i][j] == '.') {
-                    markedField[i][j] += 100;
+                    markedField[i][j] += ((int) Math.pow(lvl, 5));
                 }
             }
         }
 
 
-        
+
         for (int i = 0; i < a; i++) {
             for (int j = 0; j < a; j++) {
                 if (markedField[i][j] > max) {
@@ -836,11 +837,10 @@ public class AL extends Player {
                 y = numbers[random + 1];
             }
         } else {
-            while (helper2 != 1) {
-                x = (int) (Math.random() * a);
-                y = (int) (Math.random() * a);
-                helper2 = w.g.doMove(x, y, w.getWhoseTurn());
-            }
+                x = 14;
+                y = 14;
+                w.g.doMove(x, y, w.getWhoseTurn());
+            
         }
 
         buttonField[x][y].changeField();
@@ -855,4 +855,10 @@ public class AL extends Player {
     String getName() {
         return name;
     }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
+    }
+    
 }

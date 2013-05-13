@@ -14,6 +14,7 @@ public abstract class Player {
     abstract int getNumber();   
     abstract void makeMove();
     abstract String getName();
+    abstract void setName(String name);
     
   
 }

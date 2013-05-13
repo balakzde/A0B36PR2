@@ -68,10 +68,10 @@ public class Game {
                 }
                 if (follow == 5) {
                     field[i][j] = 'w';
-                    field[i][j-1] = 'w';
-                    field[i][j-2] = 'w';
-                    field[i][j-3] = 'w';
-                    field[i][j-4] = 'w';
+                    field[i][j - 1] = 'w';
+                    field[i][j - 2] = 'w';
+                    field[i][j - 3] = 'w';
+                    field[i][j - 4] = 'w';
                     return a;
                 }
             }
@@ -87,10 +87,10 @@ public class Game {
                 }
                 if (follow == 5) {
                     field[j][i] = 'w';
-                    field[j-1][i] = 'w';
-                    field[j-2][i] = 'w';
-                    field[j-3][i] = 'w';
-                    field[j-4][i] = 'w';
+                    field[j - 1][i] = 'w';
+                    field[j - 2][i] = 'w';
+                    field[j - 3][i] = 'w';
+                    field[j - 4][i] = 'w';
                     return a;
                 }
             }
@@ -102,18 +102,18 @@ public class Game {
             for (int j = 2; j < this.a - 2; j++) {
                 if (field[i][j] == field[i + 1][j + 1] && field[i][j] == field[i + 2][j + 2] && field[i][j] == field[i - 1][j - 1] && field[i][j] == field[i - 2][j - 2] && field[i][j] == symbol) {
                     field[i][j] = 'w';
-                    field[i+1][j+1] = 'w';
-                    field[i+2][j+2] = 'w';
-                    field[i-1][j-1] = 'w';
-                    field[i-2][j-2] = 'w';
+                    field[i + 1][j + 1] = 'w';
+                    field[i + 2][j + 2] = 'w';
+                    field[i - 1][j - 1] = 'w';
+                    field[i - 2][j - 2] = 'w';
                     return a;
                 }
                 if (field[i][j] == field[i + 1][j - 1] && field[i][j] == field[i + 2][j - 2] && field[i][j] == field[i - 1][j + 1] && field[i][j] == field[i - 2][j + 2] && field[i][j] == symbol) {
                     field[i][j] = 'w';
-                    field[i+1][j-1] = 'w';
-                    field[i+2][j-2] = 'w';
-                    field[i-1][j+1] = 'w';
-                    field[i-2][j+2] = 'w';                   
+                    field[i + 1][j - 1] = 'w';
+                    field[i + 2][j - 2] = 'w';
+                    field[i - 1][j + 1] = 'w';
+                    field[i - 2][j + 2] = 'w';
                     return a;
                 }
             }
@@ -145,15 +145,19 @@ public class Game {
     public int getA() {
         return a;
     }
-    
-    public void restart(){
-                for (int i = 0; i < a; i++) {
+
+    public void restart() {
+        for (int i = 0; i < a; i++) {
             for (int j = 0; j < a; j++) {
                 field[i][j] = '.';
 
             }
 
         }
-        
     }
+
+    public void setField(char[][] field) {
+        this.field = field;
+    }
+
 }

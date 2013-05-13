@@ -4,7 +4,6 @@
  */
 package semestralni.prace;
 
-import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -40,12 +39,10 @@ public class Button extends JButton implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
 
-        int helper;
-        helper = w.g.doMove(i, j, w.getWhoseTurn());
-
-        if (helper == 1) {
-            changeField();
-        }
+        w.x = i;
+        w.y = j;
+        w.clicked = true;
+        
     }
 
     public void changeField() {

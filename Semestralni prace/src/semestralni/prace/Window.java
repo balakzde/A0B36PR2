@@ -16,7 +16,10 @@ import javax.swing.JFrame;
  * @author Zdenek
  */
 public class Window extends JFrame {
-
+    
+    boolean clicked = false;
+    int x;
+    int y;
     Game g;
     ButtonField bf;
     Player p1;
@@ -135,6 +138,8 @@ public class Window extends JFrame {
                 }
             }
         }
+        m.saveGame.setBackground(Color.red);
+        m.loadGame.setBackground(Color.red);
         m.doContinue.setVisible(true);
     }
 

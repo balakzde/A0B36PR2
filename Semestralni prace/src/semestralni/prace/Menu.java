@@ -7,6 +7,8 @@ package semestralni.prace;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
@@ -19,7 +21,7 @@ import javax.swing.JPanel;
  */
 public class Menu extends JPanel {
 
-    JButton autoplay1, autoplay2, newGame, restartGame,doContinue;
+    JButton autoplay1, autoplay2, newGame, restartGame, doContinue, saveGame, loadGame;
     JLabel name1, name2, score1, score2;
     Window w;
 
@@ -76,7 +78,7 @@ public class Menu extends JPanel {
 
         doContinue = new JButton();
         doContinue.setText("CONTINUE");
-        doContinue.setBounds(20, 550, 295, 50);
+        doContinue.setBounds(20, 580, 295, 50);
         doContinue.setBackground(Color.green);
         this.add(doContinue);
         doContinue.setVisible(false);
@@ -115,6 +117,40 @@ public class Menu extends JPanel {
                 restartGame();
             }
         });
+
+        saveGame = new JButton();
+        saveGame.setText("Save game");
+        saveGame.setBounds(20, 460, 295, 50);
+        this.add(saveGame);
+        saveGame.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                try {
+                    save();
+                } catch (IOException ex) {
+                    Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+
+        loadGame = new JButton();
+        loadGame.setText("Load game");
+        loadGame.setBounds(20, 520, 295, 50);
+        this.add(loadGame);
+        loadGame.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                try {
+                    load();
+                } catch (IOException ex) {
+                    Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+
+
+
+
     }
 
     public void doContinue() throws InterruptedException {
@@ -122,8 +158,23 @@ public class Menu extends JPanel {
         w.g.restart();
         w.bf.restart();
         doContinue.setVisible(false);
+        saveGame.setBackground(restartGame.getBackground());
+        loadGame.setBackground(restartGame.getBackground());
         w.setFilledWithAL(false);
         w.run();
+    }
+
+    public void save() throws IOException {
+        if(w.getGameStatus()==0){
+        w.bf.saveGame();
+        }
+
+    }
+    
+    public void load() throws FileNotFoundException, IOException{
+        if(w.getGameStatus()==0){
+        w.bf.loadGame();
+        }
     }
 
     public void newGame() {
@@ -165,6 +216,7 @@ public class Menu extends JPanel {
     public void computer2() {
         if (w.p2 instanceof PCPlayer) {
             w.p2 = new AL(w.p2.getName(), w.p2.getNumber(), w);
+
             autoplay2.setBackground(Color.yellow);
 
         } else {

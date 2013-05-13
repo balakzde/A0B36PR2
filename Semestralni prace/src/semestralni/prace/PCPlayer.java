@@ -10,7 +10,7 @@ package semestralni.prace;
  */
 public class PCPlayer extends Player {
 
-    String name;
+    private String name;
     int number;
     Window w;
 
@@ -40,10 +40,29 @@ public class PCPlayer extends Player {
             w.bf.setField(helper);
             w.setFilledWithAL(true);
         }
+        
+        if(w.clicked){
+        int helper;
+        helper = w.g.doMove(w.x, w.y, w.getWhoseTurn());
+
+        if (helper == 1) {
+            Button[][]field = w.bf.getField();
+            field[w.x][w.y].changeField();
+
+        }  
+        }
+
+        
     }
 
     @Override
     public String getName() {
         return name;
     }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
+    }
+    
 }
