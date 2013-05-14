@@ -161,20 +161,21 @@ public class Menu extends JPanel {
         doContinue.setVisible(false);
         saveGame.setBackground(restartGame.getBackground());
         loadGame.setBackground(restartGame.getBackground());
+        restartGame.setBackground(restartGame.getBackground());
         w.setFilledWithAL(false);
         w.run();
     }
 
     public void save() throws IOException {
-        if(w.getGameStatus()==0){
-        w.bf.saveGame();
+        if (w.getGameStatus() == 0) {
+            w.bf.saveGame();
         }
 
     }
-    
-    public void load() throws FileNotFoundException, IOException{
-        if(w.getGameStatus()==0){
-        w.bf.loadGame();
+
+    public void load() throws FileNotFoundException, IOException {
+        if (w.getGameStatus() == 0) {
+            w.bf.loadGame();
         }
     }
 
@@ -185,18 +186,19 @@ public class Menu extends JPanel {
     }
 
     public void restartGame() {
+        if (w.getGameStatus() == 0) {
 
-        w.bf.restart();
-        w.setGameStatus(0);
-        w.g.restart();
-        score1.setText("0");
-        score2.setText("0");
-        w.setWhoseTurn(1);
-        w.setFilledWithAL(false);
+            w.bf.restart();
+            w.setGameStatus(0);
+            w.g.restart();
+            score1.setText("0");
+            score2.setText("0");
+            w.setWhoseTurn(1);
+            w.setFilledWithAL(false);
 
-        w.run();
+            w.run();
 
-
+        }
 
     }
 
@@ -204,7 +206,7 @@ public class Menu extends JPanel {
 
         if (w.p1 instanceof PCPlayer) {
             w.p1 = new AL(w.p1.getName(), w.p1.getNumber(), w);
-            autoplay1.setBackground(Color.yellow);         
+            autoplay1.setBackground(Color.yellow);
         } else {
             autoplay1.setBackground(restartGame.getBackground());
             w.p1 = new PCPlayer(w.p1.getName(), w.p1.getNumber(), w);
