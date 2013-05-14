@@ -159,9 +159,9 @@ public class Menu extends JPanel {
         w.g.restart();
         w.bf.restart();
         doContinue.setVisible(false);
-        saveGame.setBackground(restartGame.getBackground());
-        loadGame.setBackground(restartGame.getBackground());
-        restartGame.setBackground(restartGame.getBackground());
+        saveGame.setBackground(newGame.getBackground());
+        loadGame.setBackground(newGame.getBackground());
+        restartGame.setBackground(newGame.getBackground());
         w.setFilledWithAL(false);
         w.run();
     }
@@ -187,6 +187,7 @@ public class Menu extends JPanel {
 
     public void restartGame() {
         if (w.getGameStatus() == 0) {
+            w.clicked = false;
 
             w.bf.restart();
             w.setGameStatus(0);

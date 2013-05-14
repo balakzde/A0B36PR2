@@ -16,7 +16,7 @@ import javax.swing.JFrame;
  * @author Zdenek
  */
 public class Window extends JFrame {
-    
+
     boolean clicked = false;
     int x;
     int y;
@@ -105,6 +105,9 @@ public class Window extends JFrame {
 
         if (gameStatus == 3) {
             m.doContinue.setVisible(true);
+            m.saveGame.setBackground(Color.red);
+            m.loadGame.setBackground(Color.red);
+            m.restartGame.setBackground(Color.red);
             return;
         }
         if (gameStatus == 1) {
@@ -140,6 +143,7 @@ public class Window extends JFrame {
         }
         m.saveGame.setBackground(Color.red);
         m.loadGame.setBackground(Color.red);
+        m.restartGame.setBackground(Color.red);
         m.doContinue.setVisible(true);
     }
 
