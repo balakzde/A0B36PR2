@@ -209,7 +209,7 @@ public class Menu extends JPanel {
             w.p1 = new AL(w.p1.getName(), w.p1.getNumber(), w);
             autoplay1.setBackground(Color.yellow);
         } else {
-            autoplay1.setBackground(restartGame.getBackground());
+            autoplay1.setBackground(newGame.getBackground());
             w.p1 = new PCPlayer(w.p1.getName(), w.p1.getNumber(), w);
         }
 
@@ -223,7 +223,7 @@ public class Menu extends JPanel {
 
         } else {
             w.p2 = new PCPlayer(w.p2.getName(), w.p2.getNumber(), w);
-            autoplay2.setBackground(restartGame.getBackground());
+            autoplay2.setBackground(newGame.getBackground());
 
         }
     }
