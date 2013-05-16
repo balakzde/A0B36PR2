@@ -28,13 +28,7 @@ public class Button extends JButton implements ActionListener {
         this.setText(text);
     }
 
-    public int getI() {
-        return i;
-    }
 
-    public int getJ() {
-        return j;
-    }
 
     @Override
     public void actionPerformed(ActionEvent ae) {

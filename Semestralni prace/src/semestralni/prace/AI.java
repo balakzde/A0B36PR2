@@ -8,14 +8,14 @@ package semestralni.prace;
  *
  * @author Zdenek
  */
-public class AL extends Player {
+public class AI extends Player {
 
     String name;
     int number;
     Window w;
     int lvl = 5;
 
-    public AL(String name, int number, Window w) {
+    public AI(String name, int number, Window w) {
         this.name = name;
         this.number = number;
         this.w = w;

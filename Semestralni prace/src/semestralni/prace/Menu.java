@@ -206,7 +206,7 @@ public class Menu extends JPanel {
     public void computer1() {
 
         if (w.p1 instanceof PCPlayer) {
-            w.p1 = new AL(w.p1.getName(), w.p1.getNumber(), w);
+            w.p1 = new AI(w.p1.getName(), w.p1.getNumber(), w);
             autoplay1.setBackground(Color.yellow);
         } else {
             autoplay1.setBackground(newGame.getBackground());
@@ -218,7 +218,7 @@ public class Menu extends JPanel {
 
     public void computer2() {
         if (w.p2 instanceof PCPlayer) {
-            w.p2 = new AL(w.p2.getName(), w.p2.getNumber(), w);
+            w.p2 = new AI(w.p2.getName(), w.p2.getNumber(), w);
             autoplay2.setBackground(Color.yellow);
 
         } else {
