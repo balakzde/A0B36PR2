@@ -10,11 +10,30 @@ package semestralni.prace;
  */
 public abstract class Player {
     
+    String name;
+    int number;
+    Window w;
+    
+        public Player(String name, int number, Window w) {
+        this.name = name;
+        this.number = number;
+        this.w = w;
+    }
+        
+            int getNumber() {
+        return number;
+    }
+            
+    String getName() {
+        return name;
+    }
 
-    abstract int getNumber();   
+    public void setName(String name) {
+        this.name = name;
+    }
+
     abstract void makeMove();
-    abstract String getName();
-    abstract void setName(String name);
+
     
   
 }

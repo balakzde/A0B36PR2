@@ -29,6 +29,8 @@ public class Game {
 
     }
 
+    
+//    Tries to change the field according to your coordinates, if succesfully - returns 1, if not - returns 0
     int doMove(int x, int y, int play) {
 
         if (x >= 0 && x < this.a && y >= 0 && y < this.a && field[x][y] == '.') {
@@ -48,6 +50,8 @@ public class Game {
         return field;
     }
 
+    
+    // checks if player who played last wins or not, if so - returns his number and marks winning coordinates with 'w'
     int winnerCheck(int a) {
         int follow;
         char symbol;

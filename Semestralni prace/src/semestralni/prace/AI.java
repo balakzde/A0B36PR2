@@ -10,21 +10,13 @@ package semestralni.prace;
  */
 public class AI extends Player {
 
-    String name;
-    int number;
-    Window w;
+    public AI(String name, int number, Window w) {
+        super(name, number, w);
+    }
+
+
     int lvl = 5;
 
-    public AI(String name, int number, Window w) {
-        this.name = name;
-        this.number = number;
-        this.w = w;
-    }
-
-    @Override
-    int getNumber() {
-        return number;
-    }
 
     @Override
     void makeMove() {
@@ -849,15 +841,5 @@ public class AI extends Player {
 
 
 
-    }
-
-    @Override
-    String getName() {
-        return name;
-    }
-
-    @Override
-    public void setName(String name) {
-        this.name = name;
     }
 }

@@ -10,20 +10,12 @@ package semestralni.prace;
  */
 public class PCPlayer extends Player {
 
-    private String name;
-    int number;
-    Window w;
-
     public PCPlayer(String name, int number, Window w) {
-        this.name = name;
-        this.number = number;
-        this.w = w;
+        super(name, number, w);
     }
 
-    @Override
-    int getNumber() {
-        return number;
-    }
+
+
 
     @Override
     void makeMove() {
@@ -54,15 +46,5 @@ public class PCPlayer extends Player {
 
         
     }
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public void setName(String name) {
-        this.name = name;
-    }
-    
+   
 }
